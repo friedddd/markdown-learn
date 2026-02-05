@@ -403,17 +403,19 @@
           const hashes = '#'.repeat(level);
           return {
             markdown: `${hashes} ${text}`,
-            explanation: `Use ${level} hash symbol${level > 1 ? 's' : ''} followed by a space to create a level-${level} heading.`
+            explanation: `Use ${level} hash symbol${level > 1 ? 's' : ''} followed by a space to create a level-${level} heading.`,
+            hints: [`Heading level: h${level}`]
           };
         },
         () => {
           const t1 = `${pick(adjectives)} ${pick(nouns)}`.replace(/^\w/, c => c.toUpperCase());
           const t2 = `${pick(adjectives)} ${pick(nouns)}`.replace(/^\w/, c => c.toUpperCase());
           const l1 = randInt(1, 3);
-          const l2 = l1 + randInt(1, 2);
+          const l2 = Math.min(l1 + randInt(1, 2), 6);
           return {
-            markdown: `${'#'.repeat(l1)} ${t1}\n\n${'#'.repeat(Math.min(l2, 6))} ${t2}`,
-            explanation: `Create two headings: level ${l1} (${l1} hashes) and level ${Math.min(l2, 6)} (${Math.min(l2, 6)} hashes). Separate them with a blank line.`
+            markdown: `${'#'.repeat(l1)} ${t1}\n\n${'#'.repeat(l2)} ${t2}`,
+            explanation: `Create two headings: level ${l1} (${l1} hashes) and level ${l2} (${l2} hashes). Separate them with a blank line.`,
+            hints: [`First heading: h${l1}`, `Second heading: h${l2}`]
           };
         },
       ]
@@ -640,7 +642,7 @@
           return {
             markdown: `## ${heading}\n\n- ${item1}\n- ${item2}`,
             explanation: `Combine a level-2 heading with a list of links. Each list item uses inline link syntax: [text](url).`,
-            hints: [`"${name1}" URL: ${url1}`, `"${name2}" URL: ${url2}`]
+            hints: [`Heading level: h2`, `"${name1}" URL: ${url1}`, `"${name2}" URL: ${url2}`]
           };
         },
         () => {
@@ -656,7 +658,7 @@
           return {
             markdown: `### ${title}\n\nRun this code:\n\n\`\`\`${fn.lang}\n${fn.code}\n\`\`\``,
             explanation: `A heading followed by a paragraph and a fenced code block with a language identifier.`,
-            hints: [`Language: ${fn.lang}`]
+            hints: [`Heading level: h3`, `Language: ${fn.lang}`]
           };
         },
         () => {
