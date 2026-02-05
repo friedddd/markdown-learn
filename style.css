@@ -1,0 +1,777 @@
+/* ==========================================================================
+   Desaturated EPCOT 1982 Palette
+   Original: bold teal, magenta, gold, silver
+   Desaturated for a calm, modern feel
+   ========================================================================== */
+
+:root {
+  /* Light mode (default) */
+  --bg:        #f4f1ec;
+  --surface:   #ffffff;
+  --text:      #2e3440;
+  --text-muted:#6b7280;
+  --primary:   #5b8a8a;  /* desaturated teal */
+  --primary-hover: #4a7676;
+  --secondary: #9b7093;  /* desaturated magenta */
+  --secondary-hover: #876080;
+  --accent:    #c4a54e;  /* desaturated gold */
+  --muted:     #b0b3b8;  /* desaturated silver */
+  --success:   #6a9f6a;
+  --error:     #c47070;
+  --border:    #d8d4cf;
+  --code-bg:   #eae7e1;
+  --shadow:    rgba(0,0,0,0.08);
+
+  --radius: 8px;
+  --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-mono: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+  --transition: 0.2s ease;
+}
+
+[data-theme="dark"] {
+  --bg:        #1e2028;
+  --surface:   #282a36;
+  --text:      #e4e1db;
+  --text-muted:#8b8e96;
+  --primary:   #7aafaf;
+  --primary-hover: #8fc2c2;
+  --secondary: #b8909f;
+  --secondary-hover: #cba4b4;
+  --accent:    #d4b96a;
+  --muted:     #5a5d64;
+  --success:   #7db87d;
+  --error:     #d48a8a;
+  --border:    #3a3d47;
+  --code-bg:   #2f3240;
+  --shadow:    rgba(0,0,0,0.3);
+}
+
+/* ==========================================================================
+   Reset & Base
+   ========================================================================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+  transition: background var(--transition), color var(--transition);
+}
+
+/* ==========================================================================
+   Site Header
+   ========================================================================== */
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1.5rem;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.site-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--primary);
+  cursor: pointer;
+}
+
+.theme-toggle {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border-color var(--transition);
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.theme-toggle:hover {
+  border-color: var(--primary);
+}
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1.25rem;
+  border: none;
+  border-radius: var(--radius);
+  font-family: var(--font);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition);
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: #fff;
+}
+.btn-primary:hover {
+  background: var(--primary-hover);
+}
+
+.btn-secondary {
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+.btn-secondary:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.btn-icon {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  font-size: 1.1rem;
+  border-radius: var(--radius);
+}
+.btn-icon:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+.btn-icon:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* ==========================================================================
+   Home Screen
+   ========================================================================== */
+
+.home {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem 2rem;
+  text-align: center;
+}
+
+.home-hero h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+.home-subtitle {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  margin-bottom: 3rem;
+}
+
+.home-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.home-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color var(--transition), box-shadow var(--transition);
+  font-family: var(--font);
+  color: var(--text);
+}
+
+.home-card:hover {
+  border-color: var(--primary);
+  box-shadow: 0 4px 16px var(--shadow);
+}
+
+.home-card-icon {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.home-card h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--primary);
+}
+
+.home-card p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   Learn Section
+   ========================================================================== */
+
+.learn {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+.learn-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.learn-title-wrap {
+  position: relative;
+}
+
+.learn-title {
+  background: none;
+  border: none;
+  font-family: var(--font);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--primary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.25rem 0;
+}
+
+.learn-title:hover {
+  color: var(--primary-hover);
+}
+
+.learn-title-arrow {
+  font-size: 0.8rem;
+  transition: transform var(--transition);
+}
+
+.learn-title[aria-expanded="true"] .learn-title-arrow {
+  transform: rotate(180deg);
+}
+
+/* TOC Dropdown */
+.toc-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 8px 24px var(--shadow);
+  min-width: 260px;
+  max-height: 400px;
+  overflow-y: auto;
+  z-index: 50;
+  padding: 0.5rem 0;
+}
+
+.toc-dropdown ul {
+  list-style: none;
+}
+
+.toc-dropdown li {
+  padding: 0;
+}
+
+.toc-dropdown button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 0.5rem 1rem;
+  background: none;
+  border: none;
+  font-family: var(--font);
+  font-size: 0.9rem;
+  color: var(--text);
+  cursor: pointer;
+  transition: background var(--transition);
+}
+
+.toc-dropdown button:hover {
+  background: var(--code-bg);
+}
+
+.toc-dropdown button.toc-active {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* Learn Content */
+.learn-content {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem;
+  min-height: 400px;
+}
+
+.learn-content h2 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.learn-content p {
+  margin-bottom: 1rem;
+  line-height: 1.7;
+}
+
+.learn-content .example-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 1.25rem 0;
+}
+
+.learn-content .example-raw,
+.learn-content .example-rendered {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem;
+  min-height: 60px;
+}
+
+.learn-content .example-raw {
+  background: var(--code-bg);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  white-space: pre-wrap;
+  color: var(--text);
+}
+
+.learn-content .example-rendered {
+  background: var(--surface);
+}
+
+.learn-content .example-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  margin-bottom: 0.4rem;
+}
+
+/* Learn nav */
+.learn-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.learn-page-indicator {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  min-width: 60px;
+  text-align: center;
+}
+
+/* ==========================================================================
+   Practice Section
+   ========================================================================== */
+
+.practice {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+.practice-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.practice-tier {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--secondary);
+}
+
+.practice-nav-arrows {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.practice-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem;
+}
+
+.practice-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.practice-rendered {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  min-height: 80px;
+  margin-bottom: 1.5rem;
+  background: var(--bg);
+}
+
+/* Notion-style rendering inside practice-rendered */
+.practice-rendered h1,
+.practice-rendered h2,
+.practice-rendered h3,
+.practice-rendered h4,
+.practice-rendered h5,
+.practice-rendered h6 {
+  font-weight: 600;
+  line-height: 1.3;
+  margin-top: 0;
+}
+.practice-rendered h1 { font-size: 1.6rem; margin-bottom: 0.4rem; }
+.practice-rendered h2 { font-size: 1.35rem; margin-bottom: 0.4rem; }
+.practice-rendered h3 { font-size: 1.15rem; margin-bottom: 0.3rem; }
+
+.practice-rendered p {
+  margin-bottom: 0.6rem;
+  line-height: 1.6;
+}
+.practice-rendered p:last-child { margin-bottom: 0; }
+
+.practice-rendered strong { font-weight: 600; }
+.practice-rendered em { font-style: italic; }
+.practice-rendered del { text-decoration: line-through; color: var(--text-muted); }
+
+.practice-rendered a {
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.practice-rendered code {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  background: var(--code-bg);
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+}
+
+.practice-rendered pre {
+  background: var(--code-bg);
+  border-radius: var(--radius);
+  padding: 1rem;
+  overflow-x: auto;
+  margin-bottom: 0.6rem;
+}
+.practice-rendered pre code {
+  background: none;
+  padding: 0;
+}
+
+.practice-rendered blockquote {
+  border-left: 3px solid var(--muted);
+  padding-left: 1rem;
+  color: var(--text-muted);
+  margin-bottom: 0.6rem;
+}
+
+.practice-rendered ul,
+.practice-rendered ol {
+  padding-left: 1.5rem;
+  margin-bottom: 0.6rem;
+}
+.practice-rendered li { margin-bottom: 0.2rem; }
+
+.practice-rendered table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 0.6rem;
+}
+.practice-rendered th,
+.practice-rendered td {
+  border: 1px solid var(--border);
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+}
+.practice-rendered th {
+  background: var(--code-bg);
+  font-weight: 600;
+}
+
+.practice-rendered hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 1rem 0;
+}
+
+.practice-rendered img {
+  max-width: 100%;
+  border-radius: var(--radius);
+}
+
+/* Also apply notion-style rendering to learn examples */
+.learn-content .example-rendered h1,
+.learn-content .example-rendered h2,
+.learn-content .example-rendered h3,
+.learn-content .example-rendered h4,
+.learn-content .example-rendered h5,
+.learn-content .example-rendered h6 {
+  font-weight: 600;
+  line-height: 1.3;
+  margin-top: 0;
+}
+.learn-content .example-rendered h1 { font-size: 1.6rem; margin-bottom: 0.4rem; }
+.learn-content .example-rendered h2 { font-size: 1.35rem; margin-bottom: 0.4rem; }
+.learn-content .example-rendered h3 { font-size: 1.15rem; margin-bottom: 0.3rem; }
+.learn-content .example-rendered p { margin-bottom: 0.5rem; }
+.learn-content .example-rendered strong { font-weight: 600; }
+.learn-content .example-rendered code {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  background: var(--code-bg);
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+}
+.learn-content .example-rendered pre {
+  background: var(--code-bg);
+  border-radius: var(--radius);
+  padding: 0.75rem;
+  overflow-x: auto;
+}
+.learn-content .example-rendered pre code { background: none; padding: 0; }
+.learn-content .example-rendered blockquote {
+  border-left: 3px solid var(--muted);
+  padding-left: 1rem;
+  color: var(--text-muted);
+}
+.learn-content .example-rendered ul,
+.learn-content .example-rendered ol {
+  padding-left: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+.learn-content .example-rendered table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.learn-content .example-rendered th,
+.learn-content .example-rendered td {
+  border: 1px solid var(--border);
+  padding: 0.4rem 0.6rem;
+  text-align: left;
+}
+.learn-content .example-rendered th {
+  background: var(--code-bg);
+  font-weight: 600;
+}
+.learn-content .example-rendered hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 0.75rem 0;
+}
+
+/* Hints area */
+.practice-hints {
+  background: var(--code-bg);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+  padding: 0.75rem 1rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.practice-hints[hidden] {
+  display: none;
+}
+
+.practice-hints-label {
+  font-weight: 600;
+  color: var(--accent);
+  margin-right: 0.4rem;
+}
+
+.practice-hints code {
+  font-family: var(--font-mono);
+  font-size: 0.82em;
+  background: var(--surface);
+  padding: 0.1em 0.35em;
+  border-radius: 3px;
+  color: var(--text);
+}
+
+/* Input area */
+.practice-input-area {
+  margin-bottom: 1rem;
+}
+
+.practice-textarea {
+  width: 100%;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg);
+  color: var(--text);
+  resize: vertical;
+  transition: border-color var(--transition);
+}
+
+.practice-textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.practice-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.practice-feedback {
+  font-size: 0.95rem;
+  font-weight: 600;
+  min-height: 1.5em;
+}
+
+.practice-feedback.correct {
+  color: var(--success);
+}
+
+.practice-feedback.incorrect {
+  color: var(--error);
+}
+
+/* ==========================================================================
+   Modal
+   ========================================================================== */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  padding: 1rem;
+}
+
+.modal-overlay[hidden] {
+  display: none;
+}
+
+.modal {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem;
+  max-width: 560px;
+  width: 100%;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 12px 40px var(--shadow);
+}
+
+.modal-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.modal-body {
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.modal-body .answer-explanation {
+  margin-bottom: 1rem;
+  color: var(--text-muted);
+}
+
+.modal-body pre {
+  background: var(--code-bg);
+  border-radius: var(--radius);
+  padding: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  white-space: pre-wrap;
+  overflow-x: auto;
+}
+
+.modal-close {
+  width: 100%;
+}
+
+/* ==========================================================================
+   Task list checkbox styling (for practice/learn rendered areas)
+   ========================================================================== */
+
+.practice-rendered input[type="checkbox"],
+.learn-content .example-rendered input[type="checkbox"] {
+  margin-right: 0.4rem;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 600px) {
+  .home-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .learn-content .example-pair {
+    grid-template-columns: 1fr;
+  }
+
+  .learn-content {
+    padding: 1.25rem;
+  }
+
+  .practice-box {
+    padding: 1.25rem;
+  }
+
+  .home {
+    padding: 2rem 1rem 1.5rem;
+  }
+
+  .home-hero h1 {
+    font-size: 1.6rem;
+  }
+}

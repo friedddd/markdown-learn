@@ -1,0 +1,38 @@
+DEVLOG — Markdown Learning Site
+================================
+
+2026-02-05 — Project Start
+- Created ~/markdown-learn/ directory
+- Plan finalized: 3-file static site (index.html, style.css, app.js)
+- Using `marked` via CDN for markdown rendering
+- Desaturated EPCOT 1982 palette, light/dark theme support
+- Starting implementation...
+
+2026-02-05 — Initial Build Complete
+- index.html: HTML shell with home, learn, and practice sections + answer modal
+- style.css: Full desaturated EPCOT palette (light/dark), Notion-style rendered
+  markdown, responsive layout, TOC dropdown, modal overlay
+- app.js:
+  - Theme toggle with localStorage persistence + system preference detection
+  - View routing (Home → Learn / Practice, cross-links)
+  - Learn section: 13 pages of progressive content, each with side-by-side
+    raw markdown / rendered examples. Keyboard arrow nav, clickable TOC dropdown.
+  - Practice section: 9 tiers of randomly-generated challenges (headings →
+    mixed/advanced). Validation with normalization, Show Answer modal,
+    Ctrl+Enter submit, auto-advance on correct.
+- Using marked.js via CDN for all markdown rendering
+- Testing next...
+
+2026-02-05 — Bugfix: Modal visible on load
+- .modal-overlay had `display: flex` which overrode the HTML `hidden` attribute
+- Added `.modal-overlay[hidden] { display: none; }` to fix
+
+2026-02-05 — Feature: Hints & Endless Mode
+- Added "Details" hint area below the rendered preview in Practice
+  - Shows invisible info the user needs: URLs, link titles, alt text, image URLs
+  - Only appears when the challenge has hints (links, images, mixed/advanced)
+  - Styled with dashed border, accent-colored label, code-styled values
+- Practice is now endless: tiers wrap from 9 → 1 instead of stopping
+  - Arrow buttons and auto-advance both wrap
+  - Arrows are never disabled
+- Generators for Links & Images and Mixed/Advanced tiers now return hints arrays

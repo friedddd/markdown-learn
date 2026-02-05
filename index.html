@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learn Markdown</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Global Header -->
+  <header class="site-header">
+    <div class="site-title">Learn Markdown</div>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+      <span class="theme-icon" id="themeIcon">☀️</span>
+    </button>
+  </header>
+
+  <!-- Home Screen -->
+  <main class="home" id="homeView">
+    <div class="home-hero">
+      <h1>Learn Markdown</h1>
+      <p class="home-subtitle">A friendly, interactive guide to formatting with plain text.</p>
+    </div>
+    <div class="home-cards">
+      <button class="home-card" id="goLearn">
+        <div class="home-card-icon">📖</div>
+        <h2>Learn</h2>
+        <p>Step-by-step lessons on every formatting option, with live examples.</p>
+      </button>
+      <button class="home-card" id="goPractice">
+        <div class="home-card-icon">✏️</div>
+        <h2>Practice</h2>
+        <p>Test your skills with randomly generated challenges.</p>
+      </button>
+    </div>
+  </main>
+
+  <!-- Learn Section -->
+  <section class="learn" id="learnView" hidden>
+    <div class="learn-topbar">
+      <div class="learn-title-wrap">
+        <button class="learn-title" id="learnTitle" aria-expanded="false">
+          <span id="learnTitleText">Welcome</span>
+          <span class="learn-title-arrow">▾</span>
+        </button>
+        <nav class="toc-dropdown" id="tocDropdown" hidden>
+          <ul id="tocList"></ul>
+        </nav>
+      </div>
+      <button class="btn btn-primary" id="learnToPractice">Practice →</button>
+    </div>
+    <div class="learn-content" id="learnContent"></div>
+    <div class="learn-nav">
+      <button class="btn btn-icon" id="learnPrev" aria-label="Previous page">←</button>
+      <span class="learn-page-indicator" id="learnPageIndicator">1 / 13</span>
+      <button class="btn btn-icon" id="learnNext" aria-label="Next page">→</button>
+    </div>
+  </section>
+
+  <!-- Practice Section -->
+  <section class="practice" id="practiceView" hidden>
+    <div class="practice-topbar">
+      <button class="btn btn-secondary" id="practiceToLearn">← Learn</button>
+      <span class="practice-tier" id="practiceTier">Tier 1: Headings</span>
+      <div class="practice-nav-arrows">
+        <button class="btn btn-icon" id="practicePrev" aria-label="Previous challenge">←</button>
+        <button class="btn btn-icon" id="practiceNext" aria-label="Next challenge">→</button>
+      </div>
+    </div>
+    <div class="practice-box">
+      <div class="practice-prompt">
+        <div class="practice-label">Reproduce this output:</div>
+        <div class="practice-rendered" id="practiceRendered"></div>
+        <div class="practice-hints" id="practiceHints" hidden></div>
+      </div>
+      <div class="practice-input-area">
+        <label class="practice-label" for="practiceInput">Your markdown:</label>
+        <textarea class="practice-textarea" id="practiceInput" rows="6" placeholder="Type your markdown here..."></textarea>
+      </div>
+      <div class="practice-actions">
+        <button class="btn btn-primary" id="practiceSubmit">Submit</button>
+        <button class="btn btn-secondary" id="practiceShowAnswer" hidden>Show Answer</button>
+      </div>
+      <div class="practice-feedback" id="practiceFeedback"></div>
+    </div>
+
+    <!-- Show Answer Modal -->
+    <div class="modal-overlay" id="answerModal" hidden>
+      <div class="modal">
+        <h3 class="modal-title">Answer</h3>
+        <div class="modal-body" id="answerModalBody"></div>
+        <button class="btn btn-primary modal-close" id="answerModalClose">Close</button>
+      </div>
+    </div>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
