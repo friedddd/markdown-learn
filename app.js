@@ -164,13 +164,13 @@
       content: () => `
         <h2>Links & Images</h2>
         <p><strong>Inline links</strong> use <code>[text](url)</code>:</p>
-        ${example('[Visit Example](https://example.com)')}
+        ${example('[Visit Zombo](https://zombo.com)')}
         <p><strong>Links with titles</strong> — hover text in quotes:</p>
-        ${example('[Hover me](https://example.com "A tooltip!")')}
+        ${example('[Hover me](https://zombo.com "You can do anything!")')}
         <p><strong>Images</strong> are like links with a <code>!</code> prefix. The text in brackets becomes the alt text:</p>
-        ${example('![Alt text](https://via.placeholder.com/150x50/5b8a8a/ffffff?text=Markdown)')}
+        ${example('![Alt text](https://picsum.photos/seed/markdown/300/100)')}
         <p><strong>Reference-style links</strong> let you define URLs separately:</p>
-        ${example('[Click here][1]\n\n[1]: https://example.com')}
+        ${example('[Click here][1]\n\n[1]: https://zombo.com')}
       `
     },
     {
@@ -254,13 +254,13 @@
         <p><strong>Bold text in a heading:</strong></p>
         ${example('## A **very** important heading')}
         <p><strong>Links inside lists:</strong></p>
-        ${example('- [Google](https://google.com)\n- [GitHub](https://github.com)\n- [Example](https://example.com)')}
+        ${example('- [Zombo](https://zombo.com)\n- [Welcome](https://www.zombo.com)\n- [Anything](https://html5zombo.com)')}
         <p><strong>Emphasis inside blockquotes:</strong></p>
         ${example('> The key is to *never* stop **learning**.')}
         <p><strong>Code inside a list:</strong></p>
         ${example('1. Install it: `npm install marked`\n2. Import it: `import { marked } from "marked"`\n3. Use it: `marked.parse("# Hello")`')}
         <p><strong>A table with bold and links:</strong></p>
-        ${example('| Feature | Status |\n|---------|--------|\n| **Auth** | Done |\n| [API Docs](https://example.com) | In Progress |')}
+        ${example('| Feature | Status |\n|---------|--------|\n| **Auth** | Done |\n| [API Docs](https://zombo.com) | In Progress |')}
       `
     },
     {
@@ -374,7 +374,7 @@
   const verbs = ['explore', 'discover', 'create', 'illuminate', 'navigate', 'transform', 'observe', 'design', 'craft', 'build', 'launch', 'gather', 'decode', 'master', 'unlock'];
   const topics = ['astronomy', 'botany', 'cartography', 'engineering', 'folklore', 'geology', 'history', 'linguistics', 'music', 'philosophy', 'robotics', 'typography', 'zoology', 'architecture', 'chemistry'];
   const names = ['Alice', 'Bjorn', 'Clara', 'Dmitri', 'Elena', 'Felix', 'Grace', 'Hugo', 'Iris', 'Jules', 'Kira', 'Leo', 'Mira', 'Niko', 'Olive'];
-  const urls = ['https://example.com', 'https://docs.example.org', 'https://wiki.example.net', 'https://learn.example.io', 'https://notes.example.dev'];
+  const urls = ['https://zombo.com', 'https://www.zombo.com', 'https://html5zombo.com', 'https://zombo.com/welcome', 'https://zombo.com/anything-is-possible'];
   const languages = ['python', 'javascript', 'rust', 'go', 'ruby'];
   const codeSnippets = [
     { lang: 'python', code: 'print("Hello, world!")' },
@@ -483,7 +483,8 @@
         },
         () => {
           const alt = `${pick(adjectives)} ${pick(nouns)}`;
-          const imgUrl = 'https://via.placeholder.com/100x40';
+          const seed = alt.replace(/\s+/g, '-').toLowerCase();
+          const imgUrl = `https://picsum.photos/seed/${seed}/200/100`;
           return {
             markdown: `![${alt}](${imgUrl})`,
             explanation: `Image syntax is like a link but with ! prefix: ![alt text](image URL)`,
