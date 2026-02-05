@@ -753,9 +753,9 @@
       practiceFeedback.textContent = 'Correct!';
       practiceFeedback.className = 'practice-feedback correct';
       practiceShowAnswer.hidden = true;
-      // Auto-advance after a short delay (wraps to tier 1 after last tier)
+      // Auto-advance after a short delay (stays on last tier once reached)
       setTimeout(() => {
-        currentTierIndex = (currentTierIndex + 1) % tiers.length;
+        currentTierIndex = Math.min(currentTierIndex + 1, tiers.length - 1);
         loadChallenge();
       }, 1200);
     } else {
